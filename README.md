@@ -23,15 +23,18 @@ implementations. Typically used in event sourced based applications.
     - [3.4. Subscriptions](#34-subscriptions)
     - [3.5. Deleting messages](#35-deleting-messages)
     - [3.6. Testing with In Memory provider](#36-testing-with-in-memory-provider)
-- [4. MS SqlServer](#4-ms-sqlserver)
-- [5. MySql](#5-mysql)
+- [4. MS SqlServer Provider](#4-ms-sqlserver-provider)
+- [5. MySql Provider](#5-mysql-provider)
 - [6. Acknowledgements](#6-acknowledgements)
 
 <!-- /TOC -->
 
 # 1. Introduction
 
-
+The purpose of this library is to provide stream based API over relational based
+stores. The API and behavior is heavily influenced by [Event
+Store](https://geteventstore.com) but is not designed to be completely
+compatible with it. That is, if your needs grow 
 
 # 2. Things you need to know before adopting
 
@@ -60,8 +63,6 @@ implementations. Typically used in event sourced based applications.
 
 # 3. Using
 
-Core interfaces 
-
 ## 3.1. Appending messages
 
 ## 3.2. Reading messages
@@ -78,9 +79,9 @@ Core interfaces
 
 ## 3.6. Testing with In Memory provider
 
-# 4. MS SqlServer
+# 4. MS SqlServer Provider
 
-# 5. MySql
+# 5. MySql Provider
 
 # 6. Acknowledgements
 
