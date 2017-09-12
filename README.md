@@ -1,7 +1,5 @@
-# SQL Stream Store
-
-A stream store library for .NET that specifically target SQL based implementations. Typically
-used in event sourced based applications.
+A stream store library for .NET that specifically targets RDBMS based
+implementations. Typically used in event sourced based applications.
 
 | Package | Install |
 | --- | --- |
@@ -12,19 +10,79 @@ used in event sourced based applications.
 | Sqlite | [_up for grabs_](https://github.com/damianh/SqlStreamStore/issues/28) |
 | HTTP API | [_under development_](https://github.com/SQLStreamStore/SQLStreamStore.HAL) |
 
-# Design considerations:
+<!-- TOC -->
 
- - Designed to only ever support RDMBS\SQL implementations.
- - Subscriptions are eventually consistent.
- - API is influenced by (but not compatible with) [EventStore](https://geteventstore.com/)
- - Async only.
- - JSON only event and metadata payloads (usually just a `string` / `varchar` / etc).
- - No support for `System.Transaction` enforcing the concept of the stream as the consistency and transaction boundary.
+- [1. Introduction](#1-introduction)
+- [2. Things you need to know before adopting](#2-things-you-need-to-know-before-adopting)
+- [3. Using](#3-using)
+    - [3.1. Appending messages](#31-appending-messages)
+    - [3.2. Reading messages](#32-reading-messages)
+        - [3.2.1. All Stream](#321-all-stream)
+        - [3.2.2. Individual Streams](#322-individual-streams)
+    - [3.3. Stream Metadata](#33-stream-metadata)
+    - [3.4. Subscriptions](#34-subscriptions)
+    - [3.5. Deleting messages](#35-deleting-messages)
+    - [3.6. Testing with In Memory provider](#36-testing-with-in-memory-provider)
+- [4. MS SqlServer](#4-ms-sqlserver)
+- [5. MySql](#5-mysql)
+- [6. Acknowledgements](#6-acknowledgements)
 
-# Using
+<!-- /TOC -->
 
-See [Wiki](../../wiki) to get started.
+# 1. Introduction
 
-# Licences
 
-Licenced under [MIT](LICENSE).
+
+# 2. Things you need to know before adopting
+
+ - This is first and foremost a _library_ to help with working with stream based
+   concepts supporting RDMBS\SQL implementations. It has no intention of
+   becoming a full blown application/databse server.
+
+ - While it helps you with working with stream concepts over a relational
+   databases, you must still be have mechanical apathy with the underlying
+   database such as limits, log growth, performance characteristics, exception
+   handling etc.
+
+ - Subscriptions (and thus projections) are eventually consistent always will
+   be.
+
+ - You must understand your application's characteristics in terms of load, data
+   growth, acceptable latency for eventual consistency etc.
+
+ - Message metadadata payloads are strings only and expected to be JSON format.
+   This is for operational reasons to support splunking a database using it's
+   standard administration tools. Other serialization formats (or compression)
+   are not support (strictly speaking JSON isn't _enforced_ either).
+
+ - No support for ambient `System.Transaction` scopes enforcing the concept of
+   the stream as the consistency and transactional boundary.
+
+# 3. Using
+
+Core interfaces 
+
+## 3.1. Appending messages
+
+## 3.2. Reading messages
+
+### 3.2.1. All Stream
+
+### 3.2.2. Individual Streams
+
+## 3.3. Stream Metadata
+
+## 3.4. Subscriptions
+
+## 3.5. Deleting messages
+
+## 3.6. Testing with In Memory provider
+
+# 4. MS SqlServer
+
+# 5. MySql
+
+# 6. Acknowledgements
+
+
+
